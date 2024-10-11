@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .calculator { width: 200px; }
+        .calculator input { width: 100%; height: 40px; text-align: right; }
+        .calculator button { width: 50px; height: 50px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="screen" disabled />
+        <div>
+            <button onclick="pressKey('7')">7</button>
+            <button onclick="pressKey('8')">8</button>
+            <button onclick="pressKey('9')">9</button>
+            <button onclick="pressKey('/')">/</button>
+            <button onclick="pressKey('4')">4</button>
+            <button onclick="pressKey('5')">5</button>
+            <button onclick="pressKey('6')">*</button>
+            <button onclick="pressKey('-')">-</button>
+            <button onclick="pressKey('1')">1</button>
+            <button onclick="pressKey('2')">2</button>
+            <button onclick="pressKey('3')">3</button>
+            <button onclick="pressKey('+')">+</button>
+            <button onclick="pressKey('0')">0</button>
+            <button onclick="clearScreen()">C</button>
+            <button onclick="calculate()">=</button>
+        </div>
+    </div>
+    <script>
+        let expression = '';
+        function pressKey(key) {
+            expression += key;
+            document.getElementById('screen').value = expression;
+        }
+        function clearScreen() {
+            expression = '';
+            document.getElementById('screen').value = '';
+        }
+        function calculate() {
+            try {
+                expression = eval(expression);
+                document.getElementById('screen').value = expression;
+            } catch {
+                document.getElementById('screen').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
